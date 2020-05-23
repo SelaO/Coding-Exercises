@@ -1,5 +1,5 @@
 /*
-This question is from codility.com and this is my solution is js
+This question is from codility.com and this is my solution in js
 
 You have N bulbs that are connected in series and that are numbered from from 1 to N
 
