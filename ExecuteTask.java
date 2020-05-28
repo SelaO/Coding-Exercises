@@ -131,6 +131,7 @@ Explanation:
 	
 	this.exec will take the closest task and run it, then again it will call executeTask with the now minimal time only if the queue is non empty
 	
+	using some kind of while(true) is a bad idea for several reasons, it will hog the cpu, it will block the process so it will be impossible to add more than one task 
 
 Run Example: 
 
