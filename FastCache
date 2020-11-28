@@ -1,0 +1,95 @@
+you're given a cache
+
+with 10k entries such that
+
+User -> cache -> if exists do 1 if not do 2:
+
+1. return that entry
+2. look for it in the db and then remove the least used entry from 
+	the cache and put that new entry in the cache and return it
+
+examples:
+1.
+Web call
+ | 
+ | 2
+ V
+ 
+cache: 1,2,3,4,5,6
+
+return 2 and update that it was used
+
+2.
+Web call
+ | 
+ | 7
+ V
+ 
+cache: 1,2,3,4,5,6
+
+7 doesn't exist
+so look for it in the db 
+remove the least used element, that's 1 for example 
+and add 7 to the cache 
+
+1+2.
+Web call 1, just like with example 1
+and then web call 7
+but this time we won't delete 1 because it was just used
+so we'll delete 2
+
+
+implement the cache such that update and fetch will be O(1) operation
+the cache is in memory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+solution:
+use a set and linked list 
+the elements in the cache will be sorted by timestamp of last used 
+the set will hold nodes for the linked list 
+
+an element in the linked list will look like this: 
+
+node {
+	value,
+	lastUsedTime,
+	next,
+	prev,
+}
+
+so when we add a new value to the cache we delete the first element in the list 
+and add the new element to the tail of the list 
+
+if we fetch an element that exits in the linked list, we get to it from the set,
+then move move that element to the end of the list 
+we can change the pointers of its previous element because we have the prev pointer in the node 
+
